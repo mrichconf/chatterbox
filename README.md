@@ -1,2 +1,2 @@
 # chatterbox
-Messaging Service
+Email, messaging and sharing Service
