@@ -1,0 +1,23 @@
+// Copyright 2017 Matthew Rich <matthewrich.conf@gmail.com>. All rights reserved.
+
+syntax = "proto3";
+package blockproto;
+
+
+enum State {
+  absent = 0;
+  present = 1;
+}
+
+enum Flags {
+  unset = 0;
+  excludeData = 8;  
+}
+
+message Block {
+  bytes id = 1;
+  bytes data = 2;
+  State state = 3;
+  int32 size = 4;
+  Flags flags = 5;
+}
