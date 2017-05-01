@@ -1,0 +1,41 @@
+// Copyright 2017 Matthew Rich <matthewrich.conf@gmail.com>. All rights reserved.
+
+syntax = "proto3";
+package cluster_proto;
+
+enum Type {
+  none = 0;
+  query = 1;
+  response = 2;
+}
+
+enum Flags {
+  unset = 0;
+}
+
+message Node {
+string host = 1;
+uint32 port = 2;
+}
+
+message Body {
+bytes value = 1;
+uint32 type = 2;
+}
+
+message BroadcastMessage {
+Node node = 1;
+Body body = 2;
+Flags flags = 3;
+uint32 id = 4;
+}
+
+message QueryRequest {
+BroadcastMessage query = 1;
+Type messageType = 2;
+}
+
+message QueryResponse {
+BroadcastMessage response = 1;
+Type messageType = 2;
+}
